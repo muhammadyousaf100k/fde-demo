@@ -1,0 +1,28 @@
+# CALLER: what a product team writes. A few lines instead of a full pipeline.
+# dev deploys automatically; production only after dev succeeds AND an approver clicks "Approve".
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  dev:
+    uses: ./.github/workflows/reusable-deploy-azure.yml
+    # In an enterprise this points at a central repo, e.g.
+    # uses: my-org/platform-workflows/.github/workflows/reusable-deploy-azure.yml@v1
+    with:
+      environment: dev
+      app-name: demo-app-dev
+
+  production:
+    needs: dev
+    uses: ./.github/workflows/reusable-deploy-azure.yml
+    with:
+      environment: production
+      app-name: demo-app-prod

@@ -1,0 +1,13 @@
+# Dependabot opens PRs to update vulnerable or outdated dependencies,
+# including the GitHub Actions used in workflows.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

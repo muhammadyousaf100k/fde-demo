@@ -1,0 +1,6 @@
+# Demo point: the ruleset requires a code-owner approval on these paths.
+# Replace muhammadyousaf100k with your GitHub handle (or a team like @org/platform-team).
+
+*                     @muhammadyousaf100k
+/.github/workflows/   @muhammadyousaf100k
+/.github/CODEOWNERS   @muhammadyousaf100k
